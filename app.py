@@ -11,7 +11,7 @@ password = st.text_input("パスワード", type='password')
 login_event = st.button("ログイン")
 
 if phonenumber and password and login_event:
-    paypay = PayPay(proxy="210.48.240.31:3126")
+    paypay = PayPay()
     try:
         login_result = paypay.login(phonenumber, password)
     except PayPayError as e:
