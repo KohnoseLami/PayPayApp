@@ -17,6 +17,8 @@ password = st.text_input("パスワード", type='password')
 login_event = st.button("ログイン")
 
 if phonenumber and password and login_event and device_uuid and client_uuid:
+    st.write(device_uuid)
+    st.write(client_uuid)
     paypay = PayPay(device_uuid=device_uuid, client_uuid=client_uuid)
     try:
         login_result = paypay.login(phonenumber, password)
