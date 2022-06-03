@@ -6,7 +6,7 @@ from PayPayPy.main import PayPayError
 st.title("PayPay ログイン")
 st.markdown("#### 電話番号とパスワードを入力してください")
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 with col1:
     st.text_input("DeviceUUID")
 with col2:
