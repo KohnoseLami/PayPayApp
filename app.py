@@ -6,7 +6,7 @@ import uuid
 st.title("PayPay ログイン")
 st.markdown("#### 電話番号とパスワードを入力してください")
 
-phonenumber = st.text_input("電話番号")
+phonenumber = st.text_input("電話番号", max_chars=11)
 password = st.text_input("パスワード", type='password')
 
 col1, col2 = st.columns(2)
@@ -32,8 +32,9 @@ if phonenumber and password and login_event:
             st.write("ログイン成功！")
             st.write(paypay.headers)
         elif login_result.header.resultCode == "S1004":
-            otp = st.text_input("OTP")
-            if otp:
+            otp = st.text_input("OTP", max_chars=4)
+            otp_event = st.button("送信")
+            if otp and otp_event:
                 otp_result = paypay.login_otp(otp, login_result.error.otpReferenceId)
                 st.write("ログイン成功！")
                 st.write(paypay.headers)
