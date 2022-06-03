@@ -8,8 +8,10 @@ st.markdown("#### 電話番号とパスワードを入力してください")
 
 col1, col2 = st.columns(2)
 with col1:
+    device_uuid = str(uuid.uuid4()).upper()
     device_uuid = st.text_input("DeviceUUID", placeholder=str(uuid.uuid4()).upper(), help="デバイスのUUIDを指定できます。OTPをバイパスするために役立ちます")
 with col2:
+    client_uuid = str(uuid.uuid4()).upper()
     client_uuid = st.text_input("ClientUUID", placeholder=str(uuid.uuid4()).upper(), help="アプリのUUIDを指定できます。OTPをバイパスするために役立ちます")
 
 phonenumber = st.text_input("電話番号")
