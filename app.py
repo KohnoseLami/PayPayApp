@@ -1,23 +1,23 @@
 import streamlit as st
 from PayPayPy import PayPay
-
 from PayPayPy.main import PayPayError
+import uuid
 
 st.title("PayPay ログイン")
 st.markdown("#### 電話番号とパスワードを入力してください")
 
 col1, col2 = st.columns(2)
 with col1:
-    st.text_input("DeviceUUID")
+    device_uuid = st.text_input("DeviceUUID", value=str(uuid.uuid4()).upper(), help="デバイスのUUIDを指定できます。OTPをバイパスするために役立ちます")
 with col2:
-    st.text_input("ClientUUID")
+    client_uuid = st.text_input("ClientUUID", value=str(uuid.uuid4()).upper(), help="アプリのUUIDを指定できます。OTPをバイパスするために役立ちます")
 
 phonenumber = st.text_input("電話番号")
 password = st.text_input("パスワード", type='password')
 login_event = st.button("ログイン")
 
-if phonenumber and password and login_event:
-    paypay = PayPay()
+if phonenumber and password and login_event and device_uuid and client_uuid:
+    paypay = PayPay(device_uuid=device_uuid, client_uuid=client_uuid)
     try:
         login_result = paypay.login(phonenumber, password)
     except PayPayError as e:
