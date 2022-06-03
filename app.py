@@ -6,14 +6,15 @@ import uuid
 st.title("PayPay ログイン")
 st.markdown("#### 電話番号とパスワードを入力してください")
 
+phonenumber = st.text_input("電話番号")
+password = st.text_input("パスワード", type='password')
+
 col1, col2 = st.columns(2)
 with col1:
     device_uuid = st.text_input("DeviceUUID (optional)", placeholder="00000000-0000-0000-0000-000000000000", help="デバイスのUUIDを指定できます。OTPをバイパスするために役立ちます")
 with col2:
     client_uuid = st.text_input("ClientUUID (optional)", placeholder="00000000-0000-0000-0000-000000000000", help="アプリのUUIDを指定できます。OTPをバイパスするために役立ちます")
 
-phonenumber = st.text_input("電話番号")
-password = st.text_input("パスワード", type='password')
 login_event = st.button("ログイン")
 
 if phonenumber and password and login_event:
