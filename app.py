@@ -35,6 +35,7 @@ if phonenumber and password and login_event:
             otp = st.text_input("OTP", max_chars=4)
             otp_event = st.button("送信")
             if otp and otp_event:
+                st.write(otp)
                 try:
                     otp_result = paypay.login_otp(login_result.error.otpReferenceId, otp)
                 except PayPayError as e:
